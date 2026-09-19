@@ -304,9 +304,7 @@ export default function Home() {
 
     const nextSelectedAnswers = [...selectedAnswers]
     nextSelectedAnswers[currentQuestionIndex] = index
-    const willComplete = questions.every(
-      (question, questionIndex) => nextSelectedAnswers[questionIndex] === question.answer_index,
-    )
+    const willComplete = questions.every((_, questionIndex) => nextSelectedAnswers[questionIndex] !== null)
 
     setSelectedAnswers(nextSelectedAnswers)
     setAttemptCounts((counts) => {
@@ -341,7 +339,7 @@ export default function Home() {
 
     if (willComplete) {
       setCurrentStep('complete')
-      setMessage('오늘 할 일을 모두 완료했어요!')
+      setMessage('오늘 할 일을 모두 완료했어요! 글과 문제를 한 번에 복습해 보세요.')
     }
   }
 
